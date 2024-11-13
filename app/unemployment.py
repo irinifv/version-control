@@ -19,7 +19,7 @@ request_url = f"https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey={
 response = requests.get(request_url)
 parsed_response = json.loads(response.text)
 print(type(parsed_response))
-pprint(parsed_response)
+#pprint(parsed_response)
 data = parsed_response["data"]
 # Challenge A
 #
