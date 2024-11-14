@@ -7,19 +7,17 @@ import os
 import json
 from pprint import pprint
 from statistics import mean
-# packages (require installation)
-from dotenv import load_dotenv
-import requests
-from plotly.express import line
-# ENVIRONMENT VARIABLE RELATED CODE:
-load_dotenv()
-API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", default="demo")
+
+#getting the env variables
+from env_helper import get_env_variable
+API_KEY = get_env_variable("ALPHAVANTAGE_API_KEY", default="demo")
+
 # UNEMPLOYMENT REPORT FUNCTIONALITY
 request_url = f"https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey={API_KEY}"
 response = requests.get(request_url)
 parsed_response = json.loads(response.text)
 print(type(parsed_response))
-#pprint(parsed_response)
+#print(parsed_response)
 data = parsed_response["data"]
 # Challenge A
 #

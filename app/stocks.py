@@ -1,8 +1,7 @@
-# ENV VARS
-import os
-from dotenv import load_dotenv
-load_dotenv()
-API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", default="demo")
+#getting the env variables
+from env_helper import get_env_variable
+API_KEY = get_env_variable("ALPHAVANTAGE_API_KEY", default="demo")
+
 # STOCK SELECTION
 symbol = input("Please input a symbol (e.g. 'NFLX'): ")
 print("SYMBOL:", symbol)
