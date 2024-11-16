@@ -5,8 +5,10 @@ print("THIS IS AN UNEMPLOYMENT REPORT...")
 # modules (don't need installation)
 import os
 import json
+import requests
 from pprint import pprint
 from statistics import mean
+import plotly.express as px
 
 #getting the env variables
 from env_helper import get_env_variable
@@ -42,5 +44,5 @@ print("NO MONTHS:", len(this_year))
 # Plot a line chart of unemployment rates over time.
 dates = [d["date"] for d in data]
 rates = [float(d["value"]) for d in data]
-fig = line(x=dates, y=rates, title="United States Unemployment Rate over time", labels={"x": "Month", "y": "Unemployment Rate"})
+fig = px.line(x=dates, y=rates, title="United States Unemployment Rate over time", labels={"x": "Month", "y": "Unemployment Rate"})
 fig.show()
