@@ -32,8 +32,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Set PYTHONPATH to include 'app' directory
-        run: echo "PYTHONPATH=$(pwd)/app" >> $GITHUB_ENV
-        
+        run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+
       - name: Lint with flake8
         run: |
           # Stop the build if there are Python syntax errors or undefined names
