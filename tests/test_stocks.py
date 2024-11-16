@@ -1,9 +1,14 @@
 import pandas as pd
-from app.stocks import fetch_stock_data
+from app.stocks import fetch_stock_data, format_usd
 from pandas import DataFrame
 
 def test_example():
     assert 1 + 1 == 2
+
+def test_usd_formatting():
+    assert format_usd(3.5) == "$3.50"
+    assert format_usd(0.44444) == "$0.44"
+    assert format_usd(123456789) == "$123,456,789.00"
 
 def test_data_fetching():
     df = fetch_stock_data("SPOT")
