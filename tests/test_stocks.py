@@ -1,5 +1,6 @@
 import pandas as pd
-from app.stocks import fetch_stock_data, format_usd
+from app.stocks import fetch_stock_data
+from app.utils import format_usd  
 from pandas import DataFrame
 
 def test_example():
