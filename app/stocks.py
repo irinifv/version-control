@@ -3,7 +3,7 @@ import requests
 import pandas as pd 
 import sys
 sys.path.append('/Users/irinifourniv/Desktop/version-control2/app')
-from env_helper import get_env_variable
+from app.env_helper import get_env_variable
 from pandas import read_csv
 import plotly.express as px
 
