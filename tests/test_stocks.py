@@ -1,7 +1,7 @@
 import pandas as pd
+from pandas import DataFrame
 from app.stocks import fetch_stock_data
 from app.utils import format_usd  
-from pandas import DataFrame
 
 def test_example():
     assert 1 + 1 == 2

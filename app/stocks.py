@@ -4,11 +4,15 @@ import pandas as pd
 import sys
 sys.path.append('/Users/irinifourniv/Desktop/version-control2/app')
 from app.env_helper import get_env_variable
+from app.utils import format_usd
 from pandas import read_csv
 import plotly.express as px
 
 # Get the API key from environment variables
 API_KEY = get_env_variable("ALPHAVANTAGE_API_KEY", default_value="demo")
+
+def format_usd(my_price):
+    return f"${float(my_price):,.2f}"
 
 # Define the function for fetching stock data
 def fetch_stock_data(symbol):
