@@ -12,6 +12,7 @@ def stocks_form():
 
 @stocks_routes.route("/stocks/dashboard", methods=["GET", "POST"])
 def stocks_dashboard():
+    
     print("STOCKS DASHBOARD...")
     if request.method == "POST":
         request_data = dict(request.form)
@@ -33,6 +34,7 @@ def stocks_dashboard():
         latest_date = df.iloc[0]["timestamp"]
         data = df.to_dict("records")
 
+        flash("Fetched Real-time Market Data!", "success")
         return render_template(
             "stocks_dashboard.html",
             symbol=symbol,
@@ -42,7 +44,7 @@ def stocks_dashboard():
         )
     except Exception as err:
         print("OOPS:", err)
-        #flash(f"Error: {err}", "danger")
+        flash(f"Error: {err}", "danger")
         return redirect("/stocks/form")
         
 #
@@ -51,10 +53,12 @@ def stocks_dashboard():
 @stocks_routes.route("/api/stocks.json")
 def stocks_api():
     print("STOCKS DATA (API)...")
+
     # for data supplied via GET request, url params are in request.args:
     url_params = dict(request.args)
     print("URL PARAMS:", url_params)
     symbol = url_params.get("symbol") or "NFLX"
+
     try:
         df = fetch_stock_data(symbol=symbol)
         print("FETCHED DATAFRAME:", df)
