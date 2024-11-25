@@ -10,7 +10,7 @@ from web_app.routes.unemployment_routes import unemployment_routes
 
 #load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY", default="super secret")
+SECRET_KEY = os.getenv("SECRET_KEY", default="fallback_key")
 
 def create_app():
     app = Flask(__name__)
