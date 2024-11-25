@@ -1,6 +1,6 @@
 from flask import Flask
-from .routes.home_routes import home_routes
-from .routes.stocks_routes import stocks_routes
+from web_app.routes.home_routes import home_routes 
+from web_app.routes.stocks_routes import stocks_routes 
 
 def create_app():
     app = Flask(__name__)
