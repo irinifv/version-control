@@ -17,8 +17,8 @@ def test_data_fetching():
     assert isinstance(df, pd.DataFrame)  # Ensure the result is a DataFrame
     assert not df.empty  # Ensure the DataFrame is not empty
     
-    expected_columns = ["timestamp", "open", "high", "low", "close", "volume"]
+    expected_columns = ["timestamp", "open", "high", "low", "close", "adjusted_close", "volume", "dividend_amount", "split_coefficient"]
     if df.columns.tolist() != expected_columns:
         # Check for prefixed column names and validate
-        expected_prefixed_columns = ["timestamp", "open", "high", "low", "close", "volume"]
+        expected_prefixed_columns = ["timestamp", "open", "high", "low", "close", "adjusted_close", "volume", "dividend_amount", "split_coefficient"]
         assert df.columns.tolist() == expected_prefixed_columns
