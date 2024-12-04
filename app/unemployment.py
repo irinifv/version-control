@@ -11,7 +11,7 @@ from statistics import mean
 import plotly.express as px
 
 #getting the env variables
-from env_helper import get_env_variable
+from app.env_helper import get_env_variable
 API_KEY = get_env_variable("ALPHAVANTAGE_API_KEY", default_value="demo")
 
 # Helper function to format percentages
