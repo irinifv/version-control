@@ -4,45 +4,21 @@ import pandas as pd
 import sys
 sys.path.append('/Users/irinifourniv/Desktop/version-control2/app')
 from app.env_helper import get_env_variable
+from app.utils import format_usd
 from pandas import read_csv
 import plotly.express as px
 
 # Get the API key from environment variables
 API_KEY = get_env_variable("ALPHAVANTAGE_API_KEY", default_value="demo")
 
+def format_usd(my_price):
+    return f"${float(my_price):,.2f}"
+
 # Define the function for fetching stock data
 def fetch_stock_data(symbol):
-    """
-    Fetches stock data from the Alpha Vantage API for the given symbol.
-    
-    Params:
-        symbol (str): Stock symbol to fetch data for.
-    
-    Returns:
-        DataFrame: A pandas DataFrame containing stock data.
-    """
-    url = f"https://www.alphavantage.co/query"
-    params = {
-        "function": "TIME_SERIES_DAILY",
-        "symbol": symbol,
-        "apikey": "ALPHAVANTAGE_API_KEY", 
-    }
-
-    response = requests.get(url, params=params)
-    
-    if response.status_code == 200:
-        data = response.json()
-        if "Time Series (Daily)" in data:
-            df = pd.DataFrame.from_dict(data["Time Series (Daily)"], orient="index")
-            return df
-        else:
-            print("Error: No 'Time Series (Daily)' in the response")
-            return None
-    else:
-        print(f"Error fetching data: {response.status_code}")
-        return None
     request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&outputsize=full&datatype=csv"
     df = read_csv(request_url)
+    return df
 
 # Main script
 if __name__ == "__main__":
