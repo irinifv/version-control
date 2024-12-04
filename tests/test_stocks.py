@@ -20,5 +20,5 @@ def test_data_fetching():
     expected_columns = ["timestamp", "open", "high", "low", "close", "volume"]
     if df.columns.tolist() != expected_columns:
         # Check for prefixed column names and validate
-        expected_prefixed_columns = ["1. open", "2. high", "3. low", "4. close", "5. volume"]
+        expected_prefixed_columns = ["timestamp", "open", "high", "low", "close", "volume"]
         assert df.columns.tolist() == expected_prefixed_columns
